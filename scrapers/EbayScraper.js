@@ -6,21 +6,19 @@ const path = require('path');
 class EbayScraper {
     constructor(searchUrl, maxProducts = 60) {
         this.baseUrl = this.removePageParam(searchUrl);
-        this.currentPage = this.extractPageNumber(searchUrl) || 1; // Mulai dari 1 jika tidak ada _pgn
+        this.currentPage = this.extractPageNumber(searchUrl) || 1;
         this.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36'
         };
         this.maxProducts = maxProducts;
     }
 
-    /** 🔹 Fungsi untuk menghapus parameter _pgn dari URL */
     removePageParam(url) {
-        return url.replace(/&_pgn=\d+/, ''); // Hapus _pgn jika ada
+        return url.replace(/&_pgn=\d+/, '');
     }
 
-    /** 🔹 Fungsi untuk mengekstrak nomor halaman dari URL */
     extractPageNumber(url) {
-        const match = url.match(/&_pgn=(\d+)/); // Cari _pgn=<number>
+        const match = url.match(/&_pgn=(\d+)/);
         return match ? parseInt(match[1], 10) : null;
     }
 
@@ -104,12 +102,12 @@ class EbayScraper {
         }
 
         this.saveData(detailedProducts, 'ebay_products.json');
-        console.log(`✅ Scraping details selesai! ${detailedProducts.length} produk diproses.`);
+        console.log(`✅ Scraping details completed! ${detailedProducts.length} products processed.`);
         return detailedProducts;
     }
 
     async scrapeProductDetailFunction(product) {
-        console.log(`📄 Scraping detail produk: ${product.title}`);
+        console.log(`📄 Scraping product details: ${product.title}`);
         const html = await this.fetchHTML(product.url);
         if (!html) return null;
 
