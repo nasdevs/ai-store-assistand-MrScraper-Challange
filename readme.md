@@ -172,8 +172,8 @@ Asks an AI assistant questions based on the scraped eBay data.
 ## **📌 Installation & Running the API**
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/your-repo/ebay-scraper-api.git
-cd ebay-scraper-api
+git clone https://github.com/nasdevs/ai-store-assistand-MrScraper-Challange.git
+cd ai-store-assistand-MrScraper-Challange
 ```
 
 ### **2️⃣ Install Dependencies**
